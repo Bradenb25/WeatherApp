@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <TextView
+            android:text="City"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/city" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:textSize="24sp"/>
+    <TextView
+            android:text="Clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/simple_current_weather" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/city" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="176dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="177dp"/>
+    <TextView
+            android:text="7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_temp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/simple_current_weather" android:textSize="48sp"/>
+    <TextView
+            android:text="o"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="@+id/current_temp" app:layout_constraintStart_toEndOf="@+id/current_temp"
+            android:layout_marginStart="8dp" android:textSize="24sp"/>
+    <TextView
+            android:text="Wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_day_name" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/current_temp" android:textSize="18sp"/>
+    <TextView
+            android:text="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/low_temp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/current_day_name" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:textSize="18sp"/>
+    <TextView
+            android:text="35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/high_temp" app:layout_constraintEnd_toStartOf="@+id/low_temp"
+            android:layout_marginEnd="32dp" app:layout_constraintBaseline_toBaselineOf="@+id/current_day_name"
+            android:textSize="18sp"/>
+
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/hour_recycler_view" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:id="@+id/day_forecast_list_view"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/current_day_name" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:id="@+id/hour_recycler_view" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/day_forecast_list_view"/>
+</android.support.constraint.ConstraintLayout>
