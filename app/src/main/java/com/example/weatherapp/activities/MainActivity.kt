@@ -1,6 +1,7 @@
 package com.example.weatherapp.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Location
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -34,6 +35,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var intent = Intent(this, CitySearch::class.java);
+        startActivity(intent)
 
 //        if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)) {
         requestLocationPermissions()
