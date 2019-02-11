@@ -1,17 +1,15 @@
-package com.example.weatherapp
+package com.example.weatherapp.activities
 
 import android.annotation.SuppressLint
-import android.database.Cursor
 import android.location.Location
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
-import android.support.v4.app.LoaderManager
-import android.support.v4.content.Loader
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.TextView
+import com.example.weatherapp.R
 import com.example.weatherapp.adapters.DayForecastAdapter
 import com.example.weatherapp.adapters.HourForecastAdapter
 import com.example.weatherapp.models.APIKeys
@@ -20,18 +18,12 @@ import com.example.weatherapp.models.DayForecast
 import com.example.weatherapp.models.HourForecast
 import com.example.weatherapp.network.BasicClient
 import com.example.weatherapp.utils.WeatherJsonParser
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.jar.Manifest
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
