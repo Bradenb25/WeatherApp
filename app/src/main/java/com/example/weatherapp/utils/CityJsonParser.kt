@@ -6,7 +6,7 @@ import org.json.JSONObject
 class CityJsonParser {
 
 
-    fun parseCitiesJson(json: String?): List<City> {
+    fun parseCitiesJson(json: String?): ArrayList<City> {
 
         var cities = ArrayList<City>();
 
