@@ -3,4 +3,7 @@
     <string name="title_activity_city_search">CitySearch</string>
     <string name="title_activity_city_list">CityList</string>
     <string name="search_button_name">Search</string>
+    <string name="weather_description">Icon for different kinds of weather</string>
+    <string name="weather_now_description">Now</string>
+    <string name="temperature_symbol">o</string>
 </resources>
