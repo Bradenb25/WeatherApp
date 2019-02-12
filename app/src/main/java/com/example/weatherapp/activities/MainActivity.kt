@@ -13,14 +13,12 @@ import android.widget.TextView
 import com.example.weatherapp.R
 import com.example.weatherapp.adapters.DayForecastAdapter
 import com.example.weatherapp.adapters.HourForecastAdapter
-import com.example.weatherapp.models.APIKeys
-import com.example.weatherapp.models.Currently
-import com.example.weatherapp.models.DayForecast
-import com.example.weatherapp.models.HourForecast
+import com.example.weatherapp.models.*
 import com.example.weatherapp.network.BasicClient
 import com.example.weatherapp.utils.WeatherJsonParser
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import java.text.SimpleDateFormat
@@ -30,28 +28,30 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var city: City;
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var intent = Intent(this, CitySearch::class.java);
-        startActivity(intent)
+        var cityJson = getIntent().getStringExtra("city");
+        city = Gson().fromJson(cityJson, City::class.java);
+        updateLocation(city.latitude, city.longitude);
 
 //        if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)) {
         requestLocationPermissions()
 
 //        }
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-            if (location != null)
-                updateLocation(location.latitude, location.longitude);
-            else
-                updateLocation(44.3, -111.25);
-        }
+//        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+//            if (location != null)
+//                updateLocation(location.latitude, location.longitude);
+//            else
+//                updateLocation(44.3, -111.25);
+//        }
     }
 
     private fun updateLocation(lat: Double, long: Double) {
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setCurrentWeather(current: Currently, highTemp: Int, lowTemp: Int) {
         var cityView = findViewById(R.id.city) as TextView;
-        cityView.text = "Rexburg"
+        cityView.text = city.cityName
 
         var currentTempView = findViewById(R.id.current_temp) as TextView;
         currentTempView.text = current.currentTemp.toInt().toString()
