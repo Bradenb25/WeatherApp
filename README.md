@@ -1,5 +1,5 @@
 # WeatherApp
-A simple weather app to display the current temperature as well as a 24 hour forecast and a 24 hour Forecast.
+A simple weather app to display the current temperature as well as a 24 hour forecast and a 7 day forecast.
 
 This was a simple project I did to try out Kotlin along with a few RecyclerViews and custom Adapters.
 In addition this uses two APIs to access both GPS coordinates and weather information based on the GPS
