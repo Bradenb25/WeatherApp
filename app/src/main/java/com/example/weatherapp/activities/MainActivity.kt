@@ -9,12 +9,15 @@ import android.support.v4.app.ActivityCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import com.example.weatherapp.R
 import com.example.weatherapp.adapters.DayForecastAdapter
 import com.example.weatherapp.adapters.HourForecastAdapter
 import com.example.weatherapp.models.*
 import com.example.weatherapp.network.BasicClient
+import com.example.weatherapp.utils.SharedPreferencesHelper
 import com.example.weatherapp.utils.WeatherJsonParser
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -37,10 +40,13 @@ class MainActivity : AppCompatActivity() {
 
         var cityJson = getIntent().getStringExtra("city");
         city = Gson().fromJson(cityJson, City::class.java);
+        SharedPreferencesHelper(this).setCityInPreferences(city);
         updateLocation(city.latitude, city.longitude);
 
+
+
 //        if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)) {
-        requestLocationPermissions()
+//        requestLocationPermissions()
 
 //        }
 
@@ -52,6 +58,24 @@ class MainActivity : AppCompatActivity() {
 //            else
 //                updateLocation(44.3, -111.25);
 //        }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        var inflater = menuInflater
+        inflater.inflate(R.menu.config, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.city_link_icon -> {
+                var intent = Intent(this, CityList::class.java);
+                startActivity(intent);
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun updateLocation(lat: Double, long: Double) {

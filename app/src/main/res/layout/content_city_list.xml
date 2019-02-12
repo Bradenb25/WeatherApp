@@ -7,6 +7,13 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_city_list"
-        tools:context=".activities.CityList">
+        tools:context=".activities.CityList" android:id="@+id/city_list_contraint_layout">
 
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginBottom="8dp" android:layout_marginStart="8dp"
+            android:id="@+id/city_list_recyclerview"/>
 </android.support.constraint.ConstraintLayout>

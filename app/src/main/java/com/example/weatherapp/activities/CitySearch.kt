@@ -20,13 +20,19 @@ import org.jetbrains.anko.uiThread
 
 class CitySearch : AppCompatActivity() {
 
+
+    private lateinit var cities: ArrayList<City>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city_search)
         setSupportActionBar(toolbar)
 
-        Log.e("DFSA", "IN ON CREATE");
-//        search("Re");
+
+    }
+
+    fun sendResult() {
+
     }
 
     fun search(v: View) {
@@ -44,12 +50,14 @@ class CitySearch : AppCompatActivity() {
 
             uiThread {
 
-                var cities = (CityJsonParser().parseCitiesJson(searchResult));
+                cities = (CityJsonParser().parseCitiesJson(searchResult));
                 setCityListView(cities);
             }
         }
 
     }
+
+
 
     fun setCityListView(cities: ArrayList<City>) {
         var cityListRecyclerView = findViewById<RecyclerView>(R.id.city_list_recycler_view)
